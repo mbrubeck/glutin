@@ -100,7 +100,7 @@ unsafe fn init(title: Vec<u16>, builder: BuilderAttribs<'static>,
     }
 
     // computing the style and extended style of the window
-    let (ex_style, style) = if builder.monitor.is_some() {
+    let (ex_style, style) = if builder.monitor.is_some() || builder.decorations == false {
         (winapi::WS_EX_APPWINDOW, winapi::WS_POPUP | winapi::WS_CLIPSIBLINGS | winapi::WS_CLIPCHILDREN)
     } else {
         (winapi::WS_EX_APPWINDOW | winapi::WS_EX_WINDOWEDGE,
@@ -220,6 +220,27 @@ unsafe fn init(title: Vec<u16>, builder: BuilderAttribs<'static>,
         try!(set_pixel_format(&real_window, id));
         f
     };
+
+    // making the window transparent
+    if builder.transparent {
+        let bb = winapi::DWM_BLURBEHIND {
+            dwFlags: 0x1, // FIXME: DWM_BB_ENABLE;
+            fEnable: 1,
+            hRgnBlur: ptr::null_mut(),
+            fTransitionOnMaximized: 0,
+        };
+
+        let dll = kernel32::LoadLibraryA(b"dwmapi.dll\0".as_ptr() as *const _);
+        if !dll.is_null() {
+            let pr = kernel32::GetProcAddress(dll, b"DwmEnableBlurBehindWindow\0".as_ptr() as *const _);
+            if !pr.is_null() {
+                let pr: unsafe extern "system" fn(winapi::HWND, *const winapi::DWM_BLURBEHIND)
+                        -> winapi::HRESULT = mem::transmute(pr);
+                pr(real_window.0, &bb);
+            }
+            kernel32::FreeLibrary(dll);
+        }
+    }
 
     // creating the OpenGL context
     let context = try!(create_context(Some((&extra_functions, &builder)), &real_window,
