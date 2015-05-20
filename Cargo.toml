@@ -41,12 +41,14 @@ winapi = "0.1"
 gdi32-sys = "0.1"
 user32-sys = "0.1"
 kernel32-sys = "0.1"
+dwmapi-sys = "0.1"
 
 [target.x86_64-pc-windows-gnu.dependencies]
 winapi = "0.1"
 gdi32-sys = "0.1"
 user32-sys = "0.1"
 kernel32-sys = "0.1"
+dwmapi-sys = "0.1"
 
 [target.i686-unknown-linux-gnu.dependencies]
 osmesa-sys = "0.0.5"
