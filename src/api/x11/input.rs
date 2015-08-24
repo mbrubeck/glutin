@@ -271,7 +271,7 @@ fn read_input_axis_info(display: &Arc<XConnection>) -> Vec<Axis> {
     // only get events from the master devices which are 'attached'
     // to the keyboard or cursor
     let devices = unsafe{
-        (display.xinput2.XIQueryDevice)(display.display, ffi::XIAllMasterDevices, &mut device_count)
+        (display.xinput2.XIQueryDevice)(display.display, ffi::XIAllDevices, &mut device_count)
     };
     for i in 0..device_count {
         let device = unsafe { *(devices.offset(i as isize)) };
