@@ -237,7 +237,10 @@ impl<'a> Iterator for PollEventsIterator<'a> {
                                 match self.window.input_handler.lock() {
                                     Ok(mut handler) => {
                                         match handler.translate_event(&cookie.cookie) {
-                                            Some(event) => self.window.pending_events.lock().unwrap().push_back(event),
+                                            Some(event) => {
+                                                println!("{:?}", event);
+                                                self.window.pending_events.lock().unwrap().push_back(event)
+                                            }
                                             None => {}
                                         }
                                     },
@@ -567,7 +570,7 @@ impl Window {
             current_size: Cell::new((0, 0)),
             pending_events: Mutex::new(VecDeque::new()),
             cursor_state: Mutex::new(CursorState::Normal),
-            input_handler: Mutex::new(XInputEventHandler::new(display, window, ic))
+            input_handler: Mutex::new(XInputEventHandler::new(display, window, ic, window_attrs))
         };
 
         // returning
