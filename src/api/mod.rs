@@ -6,6 +6,7 @@ pub mod egl;
 pub mod emscripten;
 pub mod glx;
 pub mod osmesa;
+#[cfg(feature = "wayland")]
 pub mod wayland;
 pub mod wgl;
 pub mod win32;

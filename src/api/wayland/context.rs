@@ -5,14 +5,14 @@ use std::sync::{Arc, Mutex};
 
 use libc::c_void;
 
-use wayland_client::{EventIterator, Proxy, ProxyId};
-use wayland_client::wayland::get_display;
-use wayland_client::wayland::compositor::{WlCompositor, WlSurface};
-use wayland_client::wayland::output::WlOutput;
-use wayland_client::wayland::seat::{WlSeat, WlPointer};
-use wayland_client::wayland::shell::{WlShell, WlShellSurface};
-use wayland_client::wayland::shm::WlShm;
-use wayland_client::wayland::subcompositor::WlSubcompositor;
+use super::wayland_client::{EventIterator, Proxy, ProxyId};
+use super::wayland_client::wayland::get_display;
+use super::wayland_client::wayland::compositor::{WlCompositor, WlSurface};
+use super::wayland_client::wayland::output::WlOutput;
+use super::wayland_client::wayland::seat::{WlSeat, WlPointer};
+use super::wayland_client::wayland::shell::{WlShell, WlShellSurface};
+use super::wayland_client::wayland::shm::WlShm;
+use super::wayland_client::wayland::subcompositor::WlSubcompositor;
 
 use super::wayland_kbd::MappedKeyboard;
 use super::wayland_window::DecoratedSurface;

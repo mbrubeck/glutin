@@ -1,7 +1,7 @@
 use std::collections::VecDeque;
 
-use wayland_client::{ProxyId, EventIterator};
-use wayland_client::wayland::output::WlOutput;
+use super::wayland_client::{ProxyId, EventIterator};
+use super::wayland_client::wayland::output::WlOutput;
 
 use super::context::WAYLAND_CONTEXT;
 

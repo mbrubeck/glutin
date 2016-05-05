@@ -6,12 +6,12 @@ use ElementState;
 use MouseButton;
 use MouseScrollDelta;
 
-use wayland_client::Event as WaylandEvent;
-use wayland_client::ProxyId;
-use wayland_client::wayland::WaylandProtocolEvent as WPE;
-use wayland_client::wayland::seat::{WlSeat, WlSeatEvent, WlPointerEvent,
-                                    WlPointerButtonState,
-                                    WlPointerAxis, WlSeatCapability};
+use super::wayland_client::Event as WaylandEvent;
+use super::wayland_client::ProxyId;
+use super::wayland_client::wayland::WaylandProtocolEvent as WPE;
+use super::wayland_client::wayland::seat::{WlSeat, WlSeatEvent, WlPointerEvent,
+                                           WlPointerButtonState,
+                                           WlPointerAxis, WlSeatCapability};
 
 use super::wayland_kbd::MappedKeyboard;
 

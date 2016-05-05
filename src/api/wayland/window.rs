@@ -11,9 +11,9 @@ use api::egl;
 use api::egl::Context as EglContext;
 use platform::MonitorId as PlatformMonitorId;
 
-use wayland_client::EventIterator;
-use wayland_client::egl as wegl;
-use wayland_client::wayland::shell::WlShellSurface;
+use super::wayland_client::EventIterator;
+use super::wayland_client::egl as wegl;
+use super::wayland_client::wayland::shell::WlShellSurface;
 use super::wayland_window::{DecoratedSurface, add_borders, substract_borders};
 use super::context::{WaylandContext, WAYLAND_CONTEXT};
 

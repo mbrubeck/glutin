@@ -4,8 +4,8 @@ use Event as GlutinEvent;
 use ElementState;
 use VirtualKeyCode;
 
-use wayland_client::ProxyId;
-use wayland_client::wayland::seat::{WlKeyboardEvent,WlKeyboardKeyState};
+use super::wayland_client::ProxyId;
+use super::wayland_client::wayland::seat::{WlKeyboardEvent,WlKeyboardKeyState};
 
 use super::wayland_kbd::MappedKeyboardEvent;
 
